@@ -1,0 +1,12 @@
+{
+  "name": "eadg",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+      "gulp": "~3.8.11",
+      "gulp-concat": "*",
+      "gulp-typescript": "~2.4.2",
+      "gulp-tsc": "*",
+      "merge2": "~0.3.1"
+  }
+}
