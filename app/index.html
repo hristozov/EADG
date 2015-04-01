@@ -13,6 +13,15 @@
 <body ng-app="eadg">
 
 <script type="text/ng-template" id="app.html">
+    <select ng-model="selectedTuning"
+            ng-options="tuning as tuning.name for tuning in availableTunings"
+            ng-change="refresh()">
+    </select>
+
+    <input type="number"
+           ng-model="numberOfFrets"
+           ng-change="refresh()">
+
     <table>
         <tr>
             <td ng-repeat="cell in topRow">
@@ -21,7 +30,7 @@
         </tr>
         <tr ng-repeat="string in tones">
             <td ng-repeat="fret in string"
-                    class="{{'octave-' + fret.octave}}">
+                class="{{'octave-' + fret.octave}}">
                 {{fret.tone}}
             </td>
         </tr>
