@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     ts = require('gulp-typescript'),
     merge = require('merge2'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    ghPages = require('gulp-gh-pages');
 
 var tsProject = ts.createProject({
                                      declarationFiles: true,
@@ -40,4 +41,9 @@ gulp.task('build', ['scripts'], function () {
                          .pipe(gulp.dest('dist/css'))
                  ]);
 
+});
+
+gulp.task('deploy', function() {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
 });
