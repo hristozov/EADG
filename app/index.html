@@ -28,10 +28,10 @@
                 {{cell}}
             </td>
         </tr>
-        <tr ng-repeat="string in tones">
+        <tr ng-repeat="string in pitches">
             <td ng-repeat="fret in string"
                 class="{{'octave-' + fret.octave}}">
-                {{fret.tone}}
+                {{fret.pitch}}
             </td>
         </tr>
     </table>

@@ -1,52 +1,52 @@
 module eadg {
     export class Tuning {
         public static EADG:Tuning = new Tuning([
-            new ActualTone(Octave.C1, Tone.E),
-            new ActualTone(Octave.C1, Tone.A),
-            new ActualTone(Octave.C2, Tone.D),
-            new ActualTone(Octave.C2, Tone.G)
+            new ActualPitch(Octave.C1, Pitch.E),
+            new ActualPitch(Octave.C1, Pitch.A),
+            new ActualPitch(Octave.C2, Pitch.D),
+            new ActualPitch(Octave.C2, Pitch.G)
         ]);
 
         public static EbAbDbGb:Tuning = new Tuning([
-            new ActualTone(Octave.C1, Tone.D_SHARP),
-            new ActualTone(Octave.C1, Tone.G_SHARP),
-            new ActualTone(Octave.C2, Tone.C_SHARP),
-            new ActualTone(Octave.C2, Tone.F_SHARP)
+            new ActualPitch(Octave.C1, Pitch.D_SHARP),
+            new ActualPitch(Octave.C1, Pitch.G_SHARP),
+            new ActualPitch(Octave.C2, Pitch.C_SHARP),
+            new ActualPitch(Octave.C2, Pitch.F_SHARP)
         ]);
 
         public static BEADG:Tuning = new Tuning([
-            new ActualTone(Octave.C0, Tone.B),
-            new ActualTone(Octave.C1, Tone.E),
-            new ActualTone(Octave.C1, Tone.A),
-            new ActualTone(Octave.C2, Tone.D),
-            new ActualTone(Octave.C2, Tone.G)
+            new ActualPitch(Octave.C0, Pitch.B),
+            new ActualPitch(Octave.C1, Pitch.E),
+            new ActualPitch(Octave.C1, Pitch.A),
+            new ActualPitch(Octave.C2, Pitch.D),
+            new ActualPitch(Octave.C2, Pitch.G)
         ]);
 
         public static BEADGC:Tuning = new Tuning([
-            new ActualTone(Octave.C0, Tone.B),
-            new ActualTone(Octave.C1, Tone.E),
-            new ActualTone(Octave.C1, Tone.A),
-            new ActualTone(Octave.C2, Tone.D),
-            new ActualTone(Octave.C2, Tone.G),
-            new ActualTone(Octave.C3, Tone.C)
+            new ActualPitch(Octave.C0, Pitch.B),
+            new ActualPitch(Octave.C1, Pitch.E),
+            new ActualPitch(Octave.C1, Pitch.A),
+            new ActualPitch(Octave.C2, Pitch.D),
+            new ActualPitch(Octave.C2, Pitch.G),
+            new ActualPitch(Octave.C3, Pitch.C)
         ]);
 
-        public get tones():ActualTone[] {
-            return this._tones;
+        public get strings():ActualPitch[] {
+            return this._strings;
         }
 
         public get name():String {
             var result = "",
-                tones = this.tones,
-                tone;
-            for (var i=0; i<tones.length; i++) {
-                tone = tones[i];
-                result += tone.tone;
+                pitches = this.strings,
+                pitch;
+            for (var i=0; i<pitches.length; i++) {
+                pitch = pitches[i];
+                result += pitch.pitch;
             }
             return result;
         }
 
-        constructor(private _tones:ActualTone[]) {
+        constructor(private _strings:ActualPitch[]) {
         }
     }
 }

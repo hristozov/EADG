@@ -5,7 +5,7 @@ module eadg {
         numberOfFrets: number;
         selectedTuning: Tuning;
         availableTunings: Tuning[];
-        tones: ActualTone[][];
+        pitches: ActualPitch[][];
         refresh: ()=>void;
         topRow: string[];
     }
@@ -30,30 +30,30 @@ module eadg {
 
             $scope.topRow = [];
 
-            $scope.tones = [];
+            $scope.pitches = [];
 
             $scope.refresh = function () {
                 var tuning = $scope.selectedTuning,
                     result = [],
                     topRow = [],
-                    tonesInTuning = tuning.tones;
+                    stringsInTuning = tuning.strings;
 
                 for (var i = 0; i <= $scope.numberOfFrets; i++) {
                     topRow.push(i);
                 }
 
-                for (var i = 0; i < tonesInTuning.length; i++) {
-                    var current = tonesInTuning[i],
-                        tonesForString = [current],
+                for (var i = 0; i < stringsInTuning.length; i++) {
+                    var current = stringsInTuning[i],
+                        pitchesForString = [current],
                         j = 0;
                     while (j < $scope.numberOfFrets) {
                         current = current.next;
-                        tonesForString.push(current);
+                        pitchesForString.push(current);
                         j++;
                     }
-                    result.push(tonesForString);
+                    result.push(pitchesForString);
                 }
-                $scope.tones = result;
+                $scope.pitches = result;
                 $scope.topRow = topRow;
             };
 
