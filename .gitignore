@@ -4,3 +4,4 @@ bower_components
 *.iml
 dist/
 .publish/
+.tmp/
