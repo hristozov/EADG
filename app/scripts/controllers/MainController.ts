@@ -5,8 +5,9 @@ module eadg {
         numberOfFrets: number;
         selectedTuning: Tuning;
         availableTunings: Tuning[];
-        strings: ActualPitch[][];
-        uniquePitches: ActualPitch[];
+        showLatinNames: boolean;
+        strings: IPitch[][];
+        uniquePitches: IPitch[];
         refresh: ()=>void;
         topRow: string[];
     }
@@ -34,6 +35,8 @@ module eadg {
             $scope.strings = [];
 
             $scope.uniquePitches = [];
+
+            $scope.showLatinNames = false;
 
             $scope.refresh = function () {
                 var tuning = $scope.selectedTuning,

@@ -1,37 +1,37 @@
 module eadg {
     export class Tuning {
         public static EADG:Tuning = new Tuning([
-            new ActualPitch(Octave.C1, Pitch.E),
-            new ActualPitch(Octave.C1, Pitch.A),
-            new ActualPitch(Octave.C2, Pitch.D),
-            new ActualPitch(Octave.C2, Pitch.G)
+            PitchFactory.get('C1', 'E'),
+            PitchFactory.get('C1', 'A'),
+            PitchFactory.get('C2', 'D'),
+            PitchFactory.get('C2', 'G')
         ]);
 
         public static EbAbDbGb:Tuning = new Tuning([
-            new ActualPitch(Octave.C1, Pitch.D_SHARP),
-            new ActualPitch(Octave.C1, Pitch.G_SHARP),
-            new ActualPitch(Octave.C2, Pitch.C_SHARP),
-            new ActualPitch(Octave.C2, Pitch.F_SHARP)
+            PitchFactory.get('C1', 'D#'),
+            PitchFactory.get('C1', 'G#'),
+            PitchFactory.get('C2', 'C#'),
+            PitchFactory.get('C2', 'F#')
         ]);
 
         public static BEADG:Tuning = new Tuning([
-            new ActualPitch(Octave.C0, Pitch.B),
-            new ActualPitch(Octave.C1, Pitch.E),
-            new ActualPitch(Octave.C1, Pitch.A),
-            new ActualPitch(Octave.C2, Pitch.D),
-            new ActualPitch(Octave.C2, Pitch.G)
+            PitchFactory.get('C0', 'B'),
+            PitchFactory.get('C1', 'E'),
+            PitchFactory.get('C1', 'A'),
+            PitchFactory.get('C2', 'D'),
+            PitchFactory.get('C2', 'G')
         ]);
 
         public static BEADGC:Tuning = new Tuning([
-            new ActualPitch(Octave.C0, Pitch.B),
-            new ActualPitch(Octave.C1, Pitch.E),
-            new ActualPitch(Octave.C1, Pitch.A),
-            new ActualPitch(Octave.C2, Pitch.D),
-            new ActualPitch(Octave.C2, Pitch.G),
-            new ActualPitch(Octave.C3, Pitch.C)
+            PitchFactory.get('C0', 'B'),
+            PitchFactory.get('C1', 'E'),
+            PitchFactory.get('C1', 'A'),
+            PitchFactory.get('C2', 'D'),
+            PitchFactory.get('C2', 'G'),
+            PitchFactory.get('C3', 'C')
         ]);
 
-        public get strings():ActualPitch[] {
+        public get strings():IPitch[] {
             return this._strings;
         }
 
@@ -39,14 +39,14 @@ module eadg {
             var result = "",
                 pitches = this.strings,
                 pitch;
-            for (var i=0; i<pitches.length; i++) {
+            for (var i = 0; i < pitches.length; i++) {
                 pitch = pitches[i];
-                result += pitch.pitch;
+                result += pitch.noteName;
             }
             return result;
         }
 
-        constructor(private _strings:ActualPitch[]) {
+        constructor(private _strings:IPitch[]) {
         }
     }
 }

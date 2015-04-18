@@ -49,6 +49,7 @@ gulp.task('build', ['scripts-compile'], function () {
 
 gulp.task('test', ['build', 'tests-compile'], function () {
     return gulp.src(['dist/bower_components/angular/angular.js',
+                     'dist/bower_components/lodash/lodash.js',
                      'dist/scripts/output.js',
                      '.tmp/spec.js'])
         .pipe(jasmine({

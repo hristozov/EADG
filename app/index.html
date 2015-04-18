@@ -23,6 +23,8 @@
            ng-model="numberOfFrets"
            ng-change="refresh()">
 
+    <input type="checkbox"
+           ng-model="showLatinNames">
     <table>
         <tr>
             <td ng-repeat="cell in topRow">
@@ -31,8 +33,13 @@
         </tr>
         <tr ng-repeat="string in strings">
             <td ng-repeat="fret in string"
-                class="{{'octave-' + fret.octave}}">
-                {{fret.pitch}}
+                class="{{'octave-' + fret.octaveName}}">
+                <span ng-if="showLatinNames">
+                    {{fret.note.latinName}}
+                </span>
+<span ng-if="!showLatinNames">
+                    {{fret.note.name}}
+                </span>
             </td>
         </tr>
     </table>

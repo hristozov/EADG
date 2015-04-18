@@ -1,31 +1,50 @@
 module eadg {
-    export class Octave {
-        public static C0 = new Octave('C0');
-        public static C1 = new Octave('C1');
-        public static C2 = new Octave('C2');
-        public static C3 = new Octave('C3');
-        public static C4 = new Octave('C4');
-        public static C5 = new Octave('C5');
+    export interface IOctave {
+        name:string;
+        next:IOctave;
+    }
 
-        public static OCTAVES = [
-            Octave.C0,
-            Octave.C1,
-            Octave.C2,
-            Octave.C3,
-            Octave.C4,
-            Octave.C5
-        ];
-
+    class OctaveImpl implements IOctave {
         public get name():string {
             return this._name;
         }
 
-        public get next():Octave {
-            var index = Octave.OCTAVES.indexOf(this);
-            return Octave.OCTAVES[index + 1];
+        public get next():IOctave {
+            return OctaveFactory.next(this);
         }
 
         constructor(private _name:string) {
+        }
+    }
+
+    export class OctaveFactory {
+        private static C0 = new OctaveImpl('C0');
+        private static C1 = new OctaveImpl('C1');
+        private static C2 = new OctaveImpl('C2');
+        private static C3 = new OctaveImpl('C3');
+        private static C4 = new OctaveImpl('C4');
+        private static C5 = new OctaveImpl('C5');
+
+        private static OCTAVES:IOctave[] = [
+            OctaveFactory.C0,
+            OctaveFactory.C1,
+            OctaveFactory.C2,
+            OctaveFactory.C3,
+            OctaveFactory.C4,
+            OctaveFactory.C5
+        ];
+
+        public static get(name:string):IOctave {
+            return _.select(
+                OctaveFactory.OCTAVES,
+                function (octave) {
+                    return octave.name === name;
+                })[0];
+        }
+
+        public static next(octave:IOctave):IOctave {
+            var index = OctaveFactory.OCTAVES.indexOf(octave);
+            return OctaveFactory.OCTAVES[index + 1];
         }
     }
 }

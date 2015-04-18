@@ -3,6 +3,7 @@
 /// <reference path='libs/lodash/lodash.d.ts' />
 /// <reference path='controllers/MainController.ts' />
 /// <reference path='model/Octave.ts' />
+/// <reference path='model/Note.ts' />
 /// <reference path='model/Pitch.ts' />
 /// <reference path='model/Tunings.ts' />
 /// <reference path='Application.ts' />
