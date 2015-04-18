@@ -28,6 +28,5 @@ It's pretty straightforward.
 TODO
 ====
 * eyecandy!
-* GitHub pages
 * add more popular tunings
-* reversing the string orde
+* reversing the string order
