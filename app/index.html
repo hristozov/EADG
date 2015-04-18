@@ -8,6 +8,7 @@
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="scripts/output.js"></script>
 </head>
 <body ng-app="eadg">
@@ -28,13 +29,14 @@
                 {{cell}}
             </td>
         </tr>
-        <tr ng-repeat="string in pitches">
+        <tr ng-repeat="string in strings">
             <td ng-repeat="fret in string"
                 class="{{'octave-' + fret.octave}}">
                 {{fret.pitch}}
             </td>
         </tr>
     </table>
+    <div>Number of unique pitches: {{uniquePitches.length}}</div>
 </script>
 
 <div ng-view>

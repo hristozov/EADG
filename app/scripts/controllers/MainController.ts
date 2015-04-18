@@ -5,7 +5,8 @@ module eadg {
         numberOfFrets: number;
         selectedTuning: Tuning;
         availableTunings: Tuning[];
-        pitches: ActualPitch[][];
+        strings: ActualPitch[][];
+        uniquePitches: ActualPitch[];
         refresh: ()=>void;
         topRow: string[];
     }
@@ -30,7 +31,9 @@ module eadg {
 
             $scope.topRow = [];
 
-            $scope.pitches = [];
+            $scope.strings = [];
+
+            $scope.uniquePitches = [];
 
             $scope.refresh = function () {
                 var tuning = $scope.selectedTuning,
@@ -42,6 +45,8 @@ module eadg {
                     topRow.push(i);
                 }
 
+                var uniquePitches = [];
+
                 for (var i = 0; i < stringsInTuning.length; i++) {
                     var current = stringsInTuning[i],
                         pitchesForString = [current],
@@ -51,10 +56,20 @@ module eadg {
                         pitchesForString.push(current);
                         j++;
                     }
+
+                    var currentUniquePitches = _.pluck(uniquePitches, 'name'),
+                        newPitches = _.filter(
+                            pitchesForString, function (pitch) {
+                                return currentUniquePitches
+                                        .indexOf(pitch.name) < 0;
+                            });
+                    uniquePitches = _.union(uniquePitches, newPitches);
+
                     result.push(pitchesForString);
                 }
-                $scope.pitches = result;
+                $scope.strings = result;
                 $scope.topRow = topRow;
+                $scope.uniquePitches = uniquePitches;
             };
 
             $scope.refresh();
