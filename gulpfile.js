@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     merge = require('merge2'),
     concat = require('gulp-concat'),
     ghPages = require('gulp-gh-pages'),
-    jasmine = require('gulp-jasmine-phantom');
+    jasmine = require('gulp-jasmine-phantom'),
+    tslint = require('gulp-tslint');
 
 var tsProject = ts.createProject({
     declarationFiles: true,
@@ -63,4 +64,11 @@ gulp.task('watch', ['build'], function () {
 gulp.task('deploy', function () {
     return gulp.src('./dist/**/*')
         .pipe(ghPages());
+});
+
+
+gulp.task('tslint', function(){
+    gulp.src('app/**/*.ts')
+        .pipe(tslint())
+        .pipe(tslint.report('verbose'));
 });
