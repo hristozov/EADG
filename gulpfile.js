@@ -61,6 +61,12 @@ gulp.task('watch', ['build'], function () {
         ['build']);
 });
 
+gulp.task('watch-test', function () {
+    gulp.watch(['app/**/*.*', 'spec/**/*.*'],
+        ['test']);
+});
+
+
 gulp.task('deploy', function () {
     return gulp.src('./dist/**/*')
         .pipe(ghPages());
