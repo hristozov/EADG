@@ -31,13 +31,18 @@
                 {{cell}}
             </td>
         </tr>
+        <tr>
+            <td ng-repeat="cell in topRow">
+                {{cell | dot}}
+            </td>
+        </tr>
         <tr ng-repeat="string in strings">
             <td ng-repeat="fret in string"
                 class="{{'octave-' + fret.octaveName}}">
                 <span ng-if="showLatinNames">
                     {{fret.note.latinName}}
                 </span>
-<span ng-if="!showLatinNames">
+                <span ng-if="!showLatinNames">
                     {{fret.note.name}}
                 </span>
             </td>
