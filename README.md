@@ -14,6 +14,7 @@ Supported tunings
 * BEADG (standard 5-string)
 * BEADGC (standard 6-string)
 * EbAbDbGb (down 1/2 step, for the blues fans)
+* DADG (drop D)
 
 How to build
 ============

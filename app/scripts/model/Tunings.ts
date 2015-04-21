@@ -14,6 +14,13 @@ module eadg {
             PitchFactory.get('C2', 'F#')
         ]);
 
+        public static DADG:Tuning = new Tuning([
+            PitchFactory.get('C1', 'D'),
+            PitchFactory.get('C1', 'A'),
+            PitchFactory.get('C2', 'D'),
+            PitchFactory.get('C2', 'G')
+        ]);
+
         public static BEADG:Tuning = new Tuning([
             PitchFactory.get('C0', 'B'),
             PitchFactory.get('C1', 'E'),

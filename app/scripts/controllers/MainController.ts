@@ -24,6 +24,7 @@ module eadg {
             $scope.availableTunings = [
                 Tuning.EADG,
                 Tuning.EbAbDbGb,
+                Tuning.DADG,
                 Tuning.BEADG,
                 Tuning.BEADGC
             ];
