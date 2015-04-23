@@ -6,6 +6,7 @@ module eadg {
         selectedTuning: Tuning;
         availableTunings: Tuning[];
         showLatinNames: boolean;
+        reverseStrings: boolean;
         strings: IPitch[][];
         uniquePitches: IPitch[];
         refresh: ()=>void;
@@ -39,6 +40,8 @@ module eadg {
 
             $scope.showLatinNames = false;
 
+            $scope.reverseStrings = false;
+
             $scope.refresh = function () {
                 var tuning = $scope.selectedTuning,
                     result = [],
@@ -70,6 +73,9 @@ module eadg {
                     uniquePitches = _.union(uniquePitches, newPitches);
 
                     result.push(pitchesForString);
+                }
+                if ($scope.reverseStrings) {
+                    result = result.reverse();
                 }
                 $scope.strings = result;
                 $scope.topRow = topRow;

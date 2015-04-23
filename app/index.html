@@ -25,6 +25,10 @@
 
     <input type="checkbox"
            ng-model="showLatinNames">
+
+    <input type="checkbox"
+           ng-model="reverseStrings"
+           ng-change="refresh()">
     <table>
         <tr>
             <td ng-repeat="cell in topRow">
